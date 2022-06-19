@@ -1,0 +1,186 @@
+<html>
+
+<head></head>
+
+<body></body>
+<script>
+    // _____________________________________________________________________________________________________________________________________
+
+
+
+    alert('Привет! Добро пожаловать в "Игромант" версии 0.1');
+
+    let mainmenu = prompt(`
+        Выбери игру (число или название):
+        1 - угадалка;
+        2 - считалка;
+        3 - кликалка;
+        Для выхода введи "выход"
+    `);
+
+    while (mainmenu != 'выход') {
+        if (mainmenu == '1' || mainmenu == 'угадалка') {
+            gameCOUNTER();
+        }
+        if (mainmenu == '2' || mainmenu == 'считалка') {
+            COLCULATOR();
+        }
+        if (mainmenu == '3' || mainmenu == 'кликалка') {
+            CLICKER();
+        }
+        if (mainmenu != '1' && mainmenu != 'угадалка' && mainmenu != '2' && mainmenu != 'считалка' && mainmenu != '3' && mainmenu != 'кликалка') {
+            alert('Неправильный ввод! Попробуй еще разок (1)_(1).');
+        }
+        mainmenu = prompt(`
+        Выбери игру (число или название):
+        1 - угадалка;
+        2 - считалка;
+        3 - кликалка;
+        Для выхода введи "выход"
+    `);
+    }
+    alert('Пока, Пока');
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+    // 1 - угадалка
+
+
+
+    function gameCOUNTER() {
+        alert('Игра запускается...');
+        alert('Игра "угадалка"');
+        alert(`
+        Я случайным образом загадаю число от 1 до 100.
+        Твоя задача его угадать за минимальное количество попыток.
+        После каждого твоего ввода я буду говорить больше твое
+        число или меньше загаданного.
+        Начнем?
+    `);
+        let secretNUMBER = Math.round(0.51 + Math.random() * 99.98);
+        let counter1 = 1;
+        for (let i = +prompt('Попробуй угадать'); i != secretNUMBER; i = +prompt('Попробуй угадать')) {
+            if (secretNUMBER > Number(i)) {
+                alert(`${i} это слишком мало`);
+                counter1++;
+            }
+            if (secretNUMBER < Number(i)) {
+                alert(`${i} это слишком много`);
+                counter1++;
+            }
+            if (i !== Number(i)) {
+                alert('Блин. это не число =(');
+            }
+        }
+        alert(`Тебе удалось угадать за ${counter1} попыток.`);
+    }
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+    // 2 - считалка
+
+
+
+    function COLCULATOR() {
+        alert('Игра запускается...');
+        alert('Игра "считалка"');
+        alert(`
+            Я случайным образом буду давать 5 задач по арифметике.
+            Твоя задача правильно решить как можно больше.
+            Начнем?
+        `);
+        let counter2 = 0;
+        let exmplNUMBER = 0;
+        while (exmplNUMBER != 5) {
+            let numberRANDOM1 = Math.round(0.51 + Math.random() * 19.98);
+            let numberRANDOM2 = Math.round(0.51 + Math.random() * 19.98);
+            let helpDUMBERforDDIVISION = numberRANDOM1 / numberRANDOM2;
+            let helpDUMBERforMULT = numberRANDOM1 * numberRANDOM2;
+            let mathDECIDER = Math.round(0.51 + Math.random() * 3.98);
+            if (numberRANDOM1 > numberRANDOM2 && numberRANDOM1 % numberRANDOM2 == 0 && numberRANDOM1 !== numberRANDOM2 && helpDUMBERforDDIVISION !== 1 && helpDUMBERforMULT !== numberRANDOM1) {
+                exmplNUMBER++;
+                if (mathDECIDER == 1) {
+                    let taskPLUS = +prompt(`${numberRANDOM1} + ${numberRANDOM2}`);
+                    if (taskPLUS == numberRANDOM1 + numberRANDOM2) {
+                        counter2++;
+                    }
+                }
+                if (mathDECIDER == 2) {
+                    let taskMINUS = +prompt(`${numberRANDOM1} - ${numberRANDOM2}`);
+                    if (taskMINUS == numberRANDOM1 - numberRANDOM2) {
+                        counter2++;
+                    }
+                }
+                if (mathDECIDER == 3) {
+                    let taskMULT = +prompt(`${numberRANDOM1} * ${numberRANDOM2}`);
+                    if (taskMULT == numberRANDOM1 * numberRANDOM2) {
+                        counter2++;
+                    }
+                }
+                if (mathDECIDER == 4) {
+                    let taskDIVIS = +prompt(`${numberRANDOM1} / ${numberRANDOM2}`);
+                    if (taskDIVIS == numberRANDOM1 / numberRANDOM2) {
+                        counter2++;
+                    }
+                }
+            }
+        }
+        alert(`Тебе удалось решить ${counter2} из 5 примеров.`);
+    }
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+    // 3 - кликалка
+
+
+
+    function CLICKER() {
+        alert('Игра запускается...');
+        alert('Игра "кликалка"');
+        alert(`
+            Я случайным образом буду показывать 10 системных окон.
+            Твоя задача как можно скорее прокликать все.
+            При этом в онке "подтверждение" нужно нажать
+            не "OK" a "ОТМЕНА".
+            Начинаем?
+        `);
+
+        let errorCOUNTER = 0;
+        for (let i = 1; i <= 10; i++) {
+            let numberRANDOM = Math.round(0.51 + Math.random() * 1.98);
+            if (numberRANDOM == 1) {
+                let erorOK = confirm('Просто нажми "ОК"');
+                if (erorOK == false) {
+                    errorCOUNTER++;
+                }
+            }
+            if (numberRANDOM == 2) {
+                let erorCANCEL = confirm('Просто нажми "ОТМЕНА"');
+                if (erorCANCEL == true) {
+                    errorCOUNTER++;
+                }
+            }
+        }
+        alert(`Количество ошибок: ${errorCOUNTER}`);
+    }
+
+
+
+    // _____________________________________________________________________________________________________________________________________
+
+
+
+</script>
+
+</html>
